@@ -1,4 +1,8 @@
-const js = import("../wasm/bcrypt_decoder.js");
-js.then(js => {
-  js.greet('Rust with WASM');
-});
+import init, { greet } from '../wasm/bcrypt_decoder.js';
+
+async function run() {
+    await init();
+    greet('Rust with WASM');
+}
+
+run();
