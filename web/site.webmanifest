@@ -1,0 +1,12 @@
+{
+  "short_name": "Bcrypt-Decoder.com",
+  "name": "Bcrypt-Decoder.com - Online Bcrypt Hash Decoder",
+  "icons": [{
+    "src": "favicon.ico",
+    "type": "image/x-icon",
+    "sizes": "16x16"
+  }],
+  "start_url": "/",
+  "background_color": "#fafafa",
+  "theme_color": "#fafafa"
+}
