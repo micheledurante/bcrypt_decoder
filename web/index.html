@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Bcrypt-Decoder.com - Online Bcrypt Hash Decoder</title>
-    <meta name="description" content="Bcrypt-Decoder.com allows you to decode Bcrypt hashes into their readable parts. You can use it with a generated Bcrypt hash to know which parts it is composed of.">
+    <title>Bcrypt-Decoder.com - online bcrypt hash decoder</title>
+    <meta name="description" content="Bcrypt-Decoder.com decode Bcrypt hashes into their readable parts. You can use it with a generated Bcrypt hash to know which parts it is composed of.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <meta property="og:title" content="Bcrypt-Decoder.com">
@@ -23,8 +23,45 @@
 </head>
 
 <body>
-    <script src="js/modernizr-3.11.3.min.js"></script>
+    <div class="page-wrapper">
+        <header>
+            <h1 class="content">Bcrypt-Decoder.com - online bcrypt hash decoder</h1>
+        </header>
+
+        <section>
+            <article class="content">
+                <div class="input-wrapper wrapper">
+                    <label for="hash">
+                        <div>Enter the hash:</div>
+                        <input id="hash" name="hash" type="text" placeholder="$2…" value="$2y$12$qD.NGYqeQIku10bGNRa1.OfBN4az3S.bAo.v3Z8pgY40cKp0C0HCi">
+                    </label>
+                    <button id="decode" type="button">Decode</button>
+                </div>
+                <div id="result" class="result-wrapper wrapper">
+                    <div>
+                        <span>Algo: </span><span>bcrypt</span>
+                    </div>
+                    <div>
+                        <span>Cost: 2e</span><span>10</span><span> = </span><span>1024</span><span> iterations</span>
+                    </div>
+                    <div>
+                        <span>Salt: </span><span>qD.NGYqeQIku10bGNRa1.O</span>
+                    </div>
+                    <div>
+                        <span>Hash: </span><span>fBN4az3S.bAo.v3Z8pgY40cKp0C0HCi</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </div>
+
+    <footer>
+        <p class="content">Bcrypt-Decoder.com - online bcrypt hash decoder</p>
+    </footer>
+
     <script type="module" src="js/app.js"></script>
 </body>
+
+<!-- No frontend framework was harmed in the making of this page -->
 
 </html>
