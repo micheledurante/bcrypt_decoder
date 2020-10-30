@@ -1,0 +1,15 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    micheled -- dev
+
+# THANKS
+
+    <name>
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5, RUST 2018 Edition, WASM
+    Apache Server, Modernizr, Normalize.css, main.css
