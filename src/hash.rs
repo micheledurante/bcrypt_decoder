@@ -47,17 +47,17 @@ pub fn get_algo(hash: &str) -> u32 {
    split_hash_into_parts(hash).unwrap().algo()
 }
 
-// pub fn get_cost(hash: &str) -> u32 {
-//
-// }
-//
-// pub fn get_salt(hash: &str) -> &str {
-//
-// }
-//
-// pub fn get_hash(hash: &str) -> String {
-//
-// }
+pub fn get_cost(hash: &str) -> u32 {
+    split_hash_into_parts(hash).unwrap().cost()
+}
+
+pub fn get_salt(hash: &str) -> String {
+    split_hash_into_parts(hash).unwrap().salt()
+}
+
+pub fn get_hash(hash: &str) -> String {
+    split_hash_into_parts(hash).unwrap().hash()
+}
 
 #[cfg(test)]
 mod tests {
