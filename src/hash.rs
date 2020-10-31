@@ -1,14 +1,6 @@
 use crate::structs::{HashParts, StringUtils, AlgoType};
 
 /// Bcrypt hashes will be either 59 or 60 characters long, depending on the bcrypt variant used:
-/// $1$: MD5
-/// $2$: bcrypt
-/// $2a$: bcrypt
-/// $2x$: bcrypt
-/// $2y$: bcrypt
-/// $2b$: bcrypt
-/// $5$: SHA-256
-/// $6$: SHA-512
 fn validate_hash(hash: &str) -> bool {
     let mut result = false;
 
@@ -77,10 +69,7 @@ mod tests {
         ];
 
         for (hash, expect) in cases {
-            assert_eq!(
-                split_hash_into_parts(hash),
-                expect
-            )
+            assert_eq!(split_hash_into_parts(hash), expect)
         }
     }
 
@@ -94,10 +83,7 @@ mod tests {
         ];
 
         for (parts, expect) in cases {
-            assert_eq!(
-                create_result(parts),
-                expect
-            )
+            assert_eq!(create_result(parts), expect)
         }
     }
 
@@ -114,10 +100,7 @@ mod tests {
         ];
 
         for (hash, expect) in cases {
-            assert_eq!(
-                split_dollar_signs(hash),
-                expect
-            )
+            assert_eq!(split_dollar_signs(hash), expect)
         }
     }
 
@@ -129,10 +112,7 @@ mod tests {
         ];
 
         for (hash, expect) in cases {
-            assert_eq!(
-                validate_hash(hash),
-                expect
-            )
+            assert_eq!(validate_hash(hash), expect)
         }
     }
 
@@ -150,10 +130,7 @@ mod tests {
         ];
 
         for (hash, expect) in cases {
-            assert_eq!(
-                validate_hash(hash),
-                expect
-            )
+            assert_eq!(validate_hash(hash), expect)
         }
     }
 }
