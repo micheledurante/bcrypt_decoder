@@ -2,17 +2,39 @@ use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
 #[derive(Debug)]
-pub struct Parts {
-    pub cost: u32
+pub enum AlgoType {
+    BCrypt,
+    BCrypt2X,
+    BCrypt2Y,
+    BCrypt2B,
 }
 
-impl Parts {
-    pub fn new(cost: u32) -> Self {
-        Parts { cost }
+#[wasm_bindgen]
+#[derive(Debug)]
+pub struct HashParts {
+    algo: AlgoType,
+    cost: u32,
+}
+
+#[wasm_bindgen]
+impl HashParts {
+    #[wasm_bindgen(constructor)]
+    pub fn new(algo: AlgoType, cost: u32) -> Self {
+        HashParts { algo, cost }
+    }
+
+    #[wasm_bindgen(getter)]
+    pub fn cost(&self) -> u32 {
+        self.cost
+    }
+
+    #[wasm_bindgen(getter)]
+    pub fn algo(self) -> AlgoType {
+        self.algo
     }
 }
 
-impl PartialEq for Parts {
+impl PartialEq for HashParts {
     fn eq(&self, other: &Self) -> bool {
         self.cost == other.cost
     }
@@ -38,22 +60,14 @@ fn validate_hash(hash: &str) -> bool {
 }
 
 /// Split the hash and return its parts ina readable form.
-pub fn get_hash_parts(hash: &str) -> Parts {
-    let parts = Parts::new(10);
+pub fn get_hash_parts(hash: &str) -> HashParts {
+    let parts = HashParts::new(AlgoType::BCrypt, 10);
     parts
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[test]
-    fn test_get_hash_parts() {
-        assert_eq!(
-            get_hash_parts("asd"),
-            Parts::new(10)
-        )
-    }
 
     #[test]
     fn test_validate_hash_too_short() {

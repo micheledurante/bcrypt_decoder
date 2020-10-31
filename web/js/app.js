@@ -1,7 +1,8 @@
-import init, { Parts, get_hash_parts } from '../wasm/bcrypt_decoder.js';
+import init, { HashParts, AlgoType, get_hash_parts } from '../wasm/bcrypt_decoder.js';
 
 async function getHashParts(hash) {
-    console.log(get_hash_parts(hash) instanceof Parts);
+    console.log(get_hash_parts(hash) instanceof HashParts);
+    console.log(AlgoType[get_hash_parts(hash).algo]);
     console.log(get_hash_parts(hash).cost);
 }
 
