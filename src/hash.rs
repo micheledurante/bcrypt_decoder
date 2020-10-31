@@ -43,18 +43,22 @@ fn split_hash_into_parts(hash: &str) -> Option<HashParts> {
     Some(create_result(split_dollar_signs(hash)))
 }
 
+/// Get the algo used in the given hash
 pub fn get_algo(hash: &str) -> u32 {
    split_hash_into_parts(hash).unwrap().algo()
 }
 
+/// Get the cost used in the given hash
 pub fn get_cost(hash: &str) -> u32 {
     split_hash_into_parts(hash).unwrap().cost()
 }
 
+/// Get the salt used in the given hash
 pub fn get_salt(hash: &str) -> String {
     split_hash_into_parts(hash).unwrap().salt()
 }
 
+/// Get the hashed password in the given hash
 pub fn get_hash(hash: &str) -> String {
     split_hash_into_parts(hash).unwrap().hash()
 }
