@@ -12,7 +12,7 @@ pub enum AlgoType {
 }
 
 #[wasm_bindgen]
-struct HashParts {
+pub struct HashParts {
     algo: u32,
     cost: u32,
     salt: String,
