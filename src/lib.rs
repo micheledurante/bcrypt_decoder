@@ -1,12 +1,12 @@
 mod hash;
+mod structs;
 
 use wasm_bindgen::prelude::*;
-use crate::hash::AlgoType;
 
-// #[wasm_bindgen]
-// pub fn get_algo(hash: &str) -> AlgoType {
-//     hash::get_algo(hash)
-// }
+#[wasm_bindgen]
+pub fn get_algo(hash: &str) -> u32 {
+    hash::get_algo(hash)
+}
 
 // #[wasm_bindgen]
 // pub fn get_cost(hash: &str) -> u32 {

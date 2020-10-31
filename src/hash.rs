@@ -1,57 +1,4 @@
-use wasm_bindgen::prelude::*;
-use std::str::Split;
-
-#[wasm_bindgen]
-#[derive(Clone, Copy, Debug)]
-pub enum AlgoType {
-    Bcrypt2,
-    Bcrypt2x,
-    Bcrypt2y,
-    Bcrypt2a,
-    Bcrypt2b,
-}
-
-#[wasm_bindgen]
-pub struct HashParts {
-    algo: u32,
-    cost: u32,
-    salt: String,
-    hash: String
-}
-
-#[wasm_bindgen]
-impl HashParts {
-    #[wasm_bindgen(constructor)]
-    pub fn new(algo: u32, cost: u32, salt: String, hash: String) -> Self {
-        HashParts { algo, cost, salt, hash }
-    }
-
-    pub fn algo(&self) -> u32 {
-        self.algo
-    }
-
-    pub fn cost(&self) -> u32 {
-        self.cost
-    }
-
-    pub fn salt(self) -> String {
-        self.salt
-    }
-
-    pub fn hash(self) -> String {
-        self.hash
-    }
-}
-
-trait StringUtils {
-    fn substring(&self, start: usize, len: usize) -> Self;
-}
-
-impl StringUtils for String {
-    fn substring(&self, start: usize, len: usize) -> Self {
-        self.chars().skip(start).take(len).collect()
-    }
-}
+use crate::structs::{HashParts, StringUtils, AlgoType};
 
 /// Bcrypt hashes will be either 59 or 60 characters long, depending on the bcrypt variant used:
 /// $1$: MD5
@@ -78,28 +25,27 @@ fn split_dollar_signs(hash: &str) -> Vec<&str> {
 }
 
 /// Create the resulting struct from the hash parts
-fn create_result(parts: Vec<&str>) -> (u32, u32, String, String) {
-    (
-        parts[1].parse::<u32>().unwrap(),
+fn create_result(parts: Vec<&str>) -> HashParts {
+    HashParts::new(
+        AlgoType::value(parts[1]) as u32,
         parts[2].parse::<u32>().unwrap(),
         String::from(parts[3]).substring(0, 22),
         String::from(parts[3]).substring(22, 31)
     )
 }
 
-fn split_hash_into_parts(hash: &str) -> Option<(u32, u32, String, String)> {
+/// Create an return the HashParts struct for the given hash.
+fn split_hash_into_parts(hash: &str) -> Option<HashParts> {
     if !validate_hash(hash) {
         return None;
     }
 
-    let parts  = split_dollar_signs(hash);
-
-    Some(create_result(parts))
+    Some(create_result(split_dollar_signs(hash)))
 }
 
-// pub fn get_algo(hash: &str) -> Option<AlgoType> {
-//     let algo: u23 = split_hash_into_parts(hash);
-// }
+pub fn get_algo(hash: &str) -> u32 {
+   split_hash_into_parts(hash).unwrap().algo()
+}
 
 // pub fn get_cost(hash: &str) -> u32 {
 //
@@ -118,11 +64,28 @@ mod tests {
     use super::*;
 
     #[test]
+    fn test_split_hash_into_parts() {
+        let cases = vec![
+            (
+                "$3$10$Ro0CUfOqk6cXEKf3dyaM7OhSCvnwM9s4wIX9JeLapehKK5YdLxKcm",
+                Some(HashParts::new(3, 10, "Ro0CUfOqk6cXEKf3dyaM7O".into(), "hSCvnwM9s4wIX9JeLapehKK5YdLxKcm".into()))
+            )
+        ];
+
+        for (hash, expect) in cases {
+            assert_eq!(
+                split_hash_into_parts(hash),
+                expect
+            )
+        }
+    }
+
+    #[test]
     fn test_create_result() {
         let cases = vec![
             (
                 vec!["", "1", "2", "Ro0CUfOqk6cXEKf3dyaM7OhSCvnwM9s4wIX9JeLapehKK5YdLxKcm"],
-                (1, 2, "Ro0CUfOqk6cXEKf3dyaM7O".into(), "hSCvnwM9s4wIX9JeLapehKK5YdLxKcm".into())
+                HashParts::new(1, 2, "Ro0CUfOqk6cXEKf3dyaM7O".into(), "hSCvnwM9s4wIX9JeLapehKK5YdLxKcm".into())
             )
         ];
 
