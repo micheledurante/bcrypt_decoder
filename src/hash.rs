@@ -71,7 +71,7 @@ mod tests {
     fn test_split_hash_into_parts() {
         let cases = vec![
             (
-                "$3$10$Ro0CUfOqk6cXEKf3dyaM7OhSCvnwM9s4wIX9JeLapehKK5YdLxKcm",
+                "$2a$10$Ro0CUfOqk6cXEKf3dyaM7OhSCvnwM9s4wIX9JeLapehKK5YdLxKcm",
                 Some(HashParts::new(3, 10, "Ro0CUfOqk6cXEKf3dyaM7O".into(), "hSCvnwM9s4wIX9JeLapehKK5YdLxKcm".into()))
             )
         ];
@@ -89,7 +89,7 @@ mod tests {
         let cases = vec![
             (
                 vec!["", "1", "2", "Ro0CUfOqk6cXEKf3dyaM7OhSCvnwM9s4wIX9JeLapehKK5YdLxKcm"],
-                HashParts::new(1, 2, "Ro0CUfOqk6cXEKf3dyaM7O".into(), "hSCvnwM9s4wIX9JeLapehKK5YdLxKcm".into())
+                HashParts::new(0, 2, "Ro0CUfOqk6cXEKf3dyaM7O".into(), "hSCvnwM9s4wIX9JeLapehKK5YdLxKcm".into())
             )
         ];
 
