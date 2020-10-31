@@ -6,7 +6,5 @@
     "type": "image/x-icon",
     "sizes": "16x16"
   }],
-  "start_url": "/",
-  "background_color": "#fafafa",
-  "theme_color": "#fafafa"
+  "start_url": "/"
 }

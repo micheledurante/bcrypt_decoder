@@ -1,14 +1,15 @@
-import init, { greet } from '../wasm/bcrypt_decoder.js';
+import init, { Parts, get_hash_parts } from '../wasm/bcrypt_decoder.js';
 
-async function decode(params) {
-    greet(params);
+async function getHashParts(hash) {
+    console.log(get_hash_parts(hash) instanceof Parts);
+    console.log(get_hash_parts(hash).cost);
 }
 
 async function run() {
     await init();
 
     document.getElementById('decode').onclick = function() {
-        decode(document.getElementsByName('hash')[0].value);
+        getHashParts(document.getElementsByName('hash')[0].value);
     };
 }
 

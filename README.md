@@ -6,3 +6,9 @@ Build with:
 ```
 wasm-pack build --target web --out-dir web/wasm --release
 ```
+
+## Tests
+Test with:
+```
+cargo test
+```

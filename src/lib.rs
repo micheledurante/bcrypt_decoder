@@ -1,14 +1,9 @@
+mod hash;
+
 use wasm_bindgen::prelude::*;
+use hash::Parts;
 
 #[wasm_bindgen]
-extern {
-    pub fn alert(s: &str);
-
-    #[wasm_bindgen(js_namespace = console)]
-    pub fn log(s: &str);
-}
-
-#[wasm_bindgen]
-pub fn greet(name: &str) {
-    log(&format!("Hello, {}!", name));
+pub fn get_hash_parts(hash: &str) -> Parts {
+    hash::get_hash_parts(hash)
 }
