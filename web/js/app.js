@@ -1,21 +1,31 @@
-import init, { AlgoType, HashParts, get_algo, get_cost, get_salt, get_hash } from '../wasm/bcrypt_decoder.js';
+import init, {
+    AlgoType,
+    HashParts,
+    get_algo,
+    get_cost,
+    get_salt,
+    get_hash,
+    get_salt_bytes,
+    get_hash_bytes
+} from '../wasm/bcrypt_decoder.js';
 
-async function getHashParts(hash) {
-    console.log(AlgoType[get_algo(hash)]);
-    console.log(get_cost(hash));
-    console.log(get_salt(hash));
-    console.log(get_hash(hash));
+function getHashParts(hash) {
+    document.getElementById('algo').innerHTML = AlgoType[get_algo(hash)];
+    const cost = get_cost(hash);
+    document.getElementById('cost').innerHTML = cost;
+    document.getElementById('iterations').innerHTML = Math.pow(2, cost);
+    document.getElementById('salt').innerHTML = get_salt(hash);
+    document.getElementById('hash').innerHTML = get_hash(hash);
+    document.getElementById('salt-bytes').value = get_salt_bytes(hash);
+    document.getElementById('hash-bytes').value = get_hash_bytes(hash);
+    document.getElementById('result').style.display = 'block';
 }
 
 async function run() {
     await init();
 
     document.getElementById('decode').onclick = function() {
-        try {
-            getHashParts(document.getElementsByName('hash')[0].value);
-        } catch (e) {
-            console.log(e);
-        }
+        getHashParts(document.getElementById('hash-input').value);
     };
 }
 

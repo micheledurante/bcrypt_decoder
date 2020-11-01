@@ -1,4 +1,5 @@
 use crate::structs::{HashParts, StringUtils, AlgoType};
+use crate::base64;
 
 /// Bcrypt hashes will be either 59 or 60 characters long, depending on the bcrypt variant used:
 fn validate_hash(hash: &str) -> bool {
@@ -53,6 +54,14 @@ pub fn get_salt(hash: &str) -> String {
 /// Get the hashed password in the given hash
 pub fn get_hash(hash: &str) -> String {
     split_hash_into_parts(hash).unwrap().hash()
+}
+
+pub fn get_salt_bytes(hash: &str) -> Vec<u8> {
+    base64::decode_bcrypt(split_hash_into_parts(hash).unwrap().salt())
+}
+
+pub fn get_hash_bytes(hash: &str) -> Vec<u8> {
+    base64::decode_bcrypt(split_hash_into_parts(hash).unwrap().hash())
 }
 
 #[cfg(test)]

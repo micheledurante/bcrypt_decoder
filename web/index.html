@@ -30,23 +30,25 @@
                 <div class="input-wrapper wrapper">
                     <label for="hash">
                         <div>Enter the hash:</div>
-                        <input id="hash" name="hash" type="text" placeholder="$2…" value="$2y$12$qD.NGYqeQIku10bGNRa1.OfBN4az3S.bAo.v3Z8pgY40cKp0C0HCi">
+                        <input id="hash-input" name="hash-input" type="text" placeholder="$2…" value="$2y$12$qD.NGYqeQIku10bGNRa1.OfBN4az3S.bAo.v3Z8pgY40cKp0C0HCi">
                     </label>
                     <button id="decode" type="button">Decode</button>
                 </div>
-                <div id="result" class="result-wrapper wrapper">
+                <div id="result" class="result-wrapper wrapper" style="display: none">
                     <div>
-                        <span>Algo: </span><span>bcrypt</span>
+                        <span>Variant: </span><span id="algo"></span>
                     </div>
                     <div>
-                        <span>Cost: 2e</span><span>10</span><span> = </span><span>1024</span><span> iterations</span>
+                        <span>Cost: 2e</span><span id="cost"></span><span> = </span><span id="iterations"></span><span> iterations</span>
                     </div>
                     <div>
-                        <span>Salt: </span><span>qD.NGYqeQIku10bGNRa1.O</span>
+                        <span>Salt: </span><span id="salt"></span>
                     </div>
                     <div>
-                        <span>Hash: </span><span>fBN4az3S.bAo.v3Z8pgY40cKp0C0HCi</span>
+                        <span>Hash: </span><span id="hash"></span>
                     </div>
+                    <input type="hidden" id="salt-bytes" name="salt-bytes" />
+                    <input type="hidden" id="hash-bytes" name="hash-bytes" />
                 </div>
             </article>
         </section>
