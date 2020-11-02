@@ -9,7 +9,23 @@ import init, {
     get_hash_bytes
 } from '../wasm/bcrypt_decoder.js';
 
-function getHashParts(hash) {
+let cache;
+
+function isCacheHit(hash) {
+    return cache === hash;
+}
+
+function hideResultDivs(divs) {
+   for (let div of divs) {
+        div.style.display = 'none';
+   }
+}
+
+function showError() {
+   document.getElementById('error').style.display = 'block';
+}
+
+function setHashParts(hash) {
     document.getElementById('algo').innerHTML = AlgoType[get_algo(hash)];
     const cost = get_cost(hash);
     document.getElementById('cost').innerHTML = cost;
@@ -18,14 +34,26 @@ function getHashParts(hash) {
     document.getElementById('hash').innerHTML = get_hash(hash);
     document.getElementById('salt-bytes').value = get_salt_bytes(hash);
     document.getElementById('hash-bytes').value = get_hash_bytes(hash);
-    document.getElementById('result').style.display = 'block';
+    document.getElementById('success').style.display = 'block';
 }
 
 async function run() {
     await init();
 
     document.getElementById('decode').onclick = function() {
-        getHashParts(document.getElementById('hash-input').value);
+        if (isCacheHit(document.getElementById('hash-input').value)) {
+            return;
+        }
+
+        cache = document.getElementById('hash-input').value;
+
+        hideResultDivs(document.getElementsByClassName('result-wrapper'));
+
+        try {
+            setHashParts(cache);
+        } catch (e) {
+            showError();
+        }
     };
 }
 

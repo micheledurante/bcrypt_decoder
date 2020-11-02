@@ -34,7 +34,7 @@
                     </label>
                     <button id="decode" type="button">Decode</button>
                 </div>
-                <div id="result" class="result-wrapper wrapper" style="display: none">
+                <div id="success" class="result-wrapper wrapper success" style="display: none">
                     <div>
                         <span>Variant: </span><span id="algo"></span>
                     </div>
@@ -49,6 +49,9 @@
                     </div>
                     <input type="hidden" id="salt-bytes" name="salt-bytes" />
                     <input type="hidden" id="hash-bytes" name="hash-bytes" />
+                </div>
+                <div id="error" class="result-wrapper wrapper error" style="display: none">
+                    The hash is invalid.
                 </div>
             </article>
         </section>

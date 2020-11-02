@@ -63,5 +63,12 @@ footer {
 
 .result-wrapper {
   padding: 8px;
+}
+
+.success {
   background-color: #def2de;
+}
+
+.error {
+  background-color: #f7eaea;
 }
