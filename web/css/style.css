@@ -1,4 +1,4 @@
-@media screen and (max-width: 959px) {
+@media screen and (max-width: 719px) {
   strong {
     display: block;
   }
@@ -18,9 +18,9 @@
   }
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 720px) {
   .content {
-  max-width: 960px;
+  max-width: 720px;
   }
 
   h1 {

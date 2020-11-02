@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Bcrypt-Decoder.com - online bcrypt hash decoder</title>
     <meta name="description"
-          content="Bcrypt-Decoder.com decode Bcrypt hashes into their readable parts. You can use it with a generated Bcrypt hash to know which parts it is composed of.">
+          content="BcryptDecoder decode Bcrypt hashes into their readable parts. You can use it with a valid generated Bcrypt hash to decode the parts it is composed of.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <meta property="og:title" content="Bcrypt-Decoder.com">
@@ -23,8 +23,10 @@
 <body>
 <div class="page-wrapper">
     <header>
-        <h1 class="content"><strong><a href="/">BcryptDecoder</a></strong><span class="light"> Online bcrypt hash decoder</span>
-        </h1>
+        <a href="/">
+            <h1 class="content"><strong>BcryptDecoder</strong><span class="light"> Online bcrypt hash decoder</span>
+            </h1>
+        </a>
     </header>
 
     <section>
@@ -32,7 +34,7 @@
             <div class="input-wrapper wrapper">
                 <label for="hash-input">Hash:
                     <div class="clear-wrapper">
-                        <input id="hash-input" name="hash-input" title="Enter the hash" type="text">
+                        <input id="hash-input" name="hash-input" class="hash-input" title="Enter the hash" type="text">
                         <button class="clear-button" id="clear-button">&#935;</button>
                     </div>
                 </label>

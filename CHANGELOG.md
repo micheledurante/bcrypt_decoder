@@ -6,6 +6,13 @@
 
 ## 1.0.0 [Unreleased]
 
+## 1.0.0-rc3 [2010-11-02]
+#### Fixed
+- Header `<a>` attribute and reduced width.
+
+#### Removed
+- webmanifest and humans.txt files.
+
 ## 1.0.0-rc2 [2010-11-02]
 #### Added
 - Add CSS media queries.
