@@ -12,3 +12,8 @@ Test with:
 ```
 cargo test
 ```
+
+## How to Release
+1. If not present already, create a new section for the `[Upcoming]` release in `CHANGELOG.md`.
+1. Replace `[Upcoming]` from the current release with the today's date using the format `[YYYY-MM-DD]`.
+1. Bump up the release number in `Cargo.toml`.
