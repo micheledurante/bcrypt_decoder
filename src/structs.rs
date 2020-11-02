@@ -12,7 +12,8 @@ use wasm_bindgen::prelude::*;
 /// $6$: SHA-512
 /// https://stackoverflow.com/questions/5393803/can-someone-explain-how-bcrypt-verifies-a-hash
 pub enum AlgoType {
-    Bcrypt2,
+    UNKNOWN,
+    Bcrypt2 ,
     Bcrypt2x,
     Bcrypt2y,
     Bcrypt2a,
@@ -27,7 +28,8 @@ impl AlgoType {
             "2x" => Self::Bcrypt2x as u8,
             "2y" => Self::Bcrypt2y as u8,
             "2b" => Self::Bcrypt2b as u8,
-            _ => Self::Bcrypt2 as u8
+            "2" => Self::Bcrypt2 as u8,
+            _ => Self::UNKNOWN as u8,
         }
     }
 }
@@ -91,75 +93,48 @@ mod tests {
 
     #[test]
     fn test_algo_type_value() {
-        let cases = vec![
-            ("", 0),
-            ("aaa", 0),
-            ("2x", 1),
-            ("2y", 2),
-            ("2a", 3),
-            ("2b", 4),
-        ];
-
-        for (name, expect) in cases {
-            assert_eq!(AlgoType::value(name), expect)
-        }
+        assert_eq!(AlgoType::value(""), 0);
+        assert_eq!(AlgoType::value("6"), 0);
+        assert_eq!(AlgoType::value("aaa"), 0);
+        assert_eq!(AlgoType::value("2"), 1);
+        assert_eq!(AlgoType::value("2x"), 2);
+        assert_eq!(AlgoType::value("2y"), 3);
+        assert_eq!(AlgoType::value("2a"), 4);
+        assert_eq!(AlgoType::value("2b"), 5);
     }
 
     #[test]
     fn test_hash_parts_new() {
-        let cases = vec![
-            (
-                HashParts::new(1,2, "asd".into(), "qwe".into()),
-                1,
-                2,
-                String::from("asd"),
-                String::from("qwe")
-            )
-        ];
+        let obj = HashParts::new(1,2, "asd".into(), "qwe".into());
 
-        for (obj, algo, cost, salt, hash) in cases {
-            assert_eq!(obj.algo, algo);
-            assert_eq!(obj.cost, cost);
-            assert_eq!(obj.salt, salt);
-            assert_eq!(obj.hash, hash);
-        }
+        assert_eq!(obj.algo, 1);
+        assert_eq!(obj.cost, 2);
+        assert_eq!(obj.salt, String::from("asd"));
+        assert_eq!(obj.hash, String::from("qwe"));
     }
 
     #[test]
     fn test_hash_parts_eq() {
-        let cases = vec![
-            (
-                HashParts::new(1,2, "asd".into(), "qwe".into()),
-                HashParts::new(1,2, "asd".into(), "qwe".into()),
-                true
-            ),
-            (
-                HashParts::new(2,2, "asd".into(), "qwe".into()),
-                HashParts::new(1,2, "asd".into(), "qwe".into()),
-                false
-            )
-        ];
+        assert_eq!(
+            HashParts::new(1,2, "asd".into(), "qwe".into()) == HashParts::new(1,2, "asd".into(), "qwe".into()),
+            true
+        );
 
-        for (first, second, expect) in cases {
-            assert_eq!(first == second, expect)
-        }
+        assert_eq!(
+            HashParts::new(2,2, "asd".into(), "qwe".into()) == HashParts::new(1,2, "asd".into(), "qwe".into()),
+            false
+        );
     }
 
     #[test]
     fn test_string_utils_substring() {
-        let cases = vec![
-            ("", 0, 0, ""),
-            ("asd", 0, 3, "asd"),
-            ("asd", 1, 3, "sd"),
-            ("", 1, 3, ""),
-            ("asd", 4, 3, ""),
-            ("asd", 3, 4, ""),
-            ("asd", 2, 4, "d"),
-            ("asd", 0, 4, "asd"),
-        ];
-
-        for (str, start, len, expect) in cases {
-            assert_eq!(String::from(str).substring(start, len), expect)
-        }
+        assert_eq!(String::from("").substring(0, 0), "");
+        assert_eq!(String::from("asd").substring(0, 3), "asd");
+        assert_eq!(String::from("asd").substring(1, 3), "sd");
+        assert_eq!(String::from("").substring(1, 3), "");
+        assert_eq!(String::from("asd").substring(4, 3), "");
+        assert_eq!(String::from("asd").substring(3, 4), "");
+        assert_eq!(String::from("asd").substring(2, 4), "d");
+        assert_eq!(String::from("asd").substring(0, 4), "asd");
     }
 }
