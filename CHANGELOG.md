@@ -1,9 +1,14 @@
 # Changelog
 
-## 0.4.0 [Unreleased]
+## 1.1.0 [Unreleased]
+#### Added
+- Find a way to reduce the number of calls over the `js-wasm` boundary.
+
+## 1.0.0 [Unreleased]
+
+## 1.0.0-rc1 [2010-11-02]
 #### Added
 - Create webpage style.
-- Store decoded info in a `Vec<Vec<u8>>` on rust side and convert back on `js` side to reduce the number of calls.
 - Add open source analytics.
 
 #### Removed

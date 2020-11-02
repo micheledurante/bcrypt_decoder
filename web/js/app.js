@@ -16,6 +16,14 @@ function showError() {
    document.getElementById('error').style.display = 'block';
 }
 
+function clearInput() {
+    document.getElementById('hash-input').value = '';
+}
+
+function showResult() {
+    document.getElementById('success').style.display = 'block';
+}
+
 function setValues(hash) {
     document.getElementById('algo').innerHTML = AlgoType[get_algo(hash)];
     const cost = get_cost(hash);
@@ -23,7 +31,6 @@ function setValues(hash) {
     document.getElementById('iterations').innerHTML = Math.pow(2, cost);
     document.getElementById('salt').innerHTML = get_salt(hash);
     document.getElementById('hash').innerHTML = get_hash(hash);
-    document.getElementById('success').style.display = 'block';
 }
 
 function getHashParts() {
@@ -37,15 +44,20 @@ function getHashParts() {
 
     try {
         setValues(cache);
+        showResult();
     } catch (e) {
         showError();
     }
 }
 
+document.getElementById('decode').onclick = function() {
+    getHashParts();
+};
+
+document.getElementById('clear-button').onclick = function() {
+    clearInput();
+};
+
 (async function run() {
     await init();
-
-    document.getElementById('decode').onclick = function() {
-        getHashParts();
-    };
 })();

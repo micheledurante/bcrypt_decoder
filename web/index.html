@@ -15,24 +15,26 @@
     <link rel="manifest" href="site.webmanifest">
     <link rel="apple-touch-icon" href="icon.png">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
-
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <div class="page-wrapper">
         <header>
-            <h1 class="content">Bcrypt-Decoder.com - online bcrypt hash decoder</h1>
+            <h1 class="content"><strong><a href="/">BcryptDecoder</a></strong><span class="light"> Online bcrypt hash decoder</span></h1>
         </header>
 
         <section>
             <article class="content">
                 <div class="input-wrapper wrapper">
-                    <label for="hash">
-                        <div>Enter the hash:</div>
-                        <input id="hash-input" name="hash-input" type="text" placeholder="$2…" value="$2y$12$qD.NGYqeQIku10bGNRa1.OfBN4az3S.bAo.v3Z8pgY40cKp0C0HCi">
-                    </label>
-                    <button id="decode" type="button">Decode</button>
+                    <div class="clear-wrapper">
+                        <input id="hash-input" name="hash-input" title="Provide the input" type="text" placeholder="Provide the input">
+                        <button class="clear-button" id="clear-button">&#935;</button>
+                    </div>
+                    <div class="actions">
+                        <button class="decode" id="decode" type="button">Decode</button>
+                    </div>
                 </div>
                 <div id="success" class="result-wrapper wrapper success" style="display: none">
                     <div>
@@ -47,18 +49,16 @@
                     <div>
                         <span>Hash: </span><span id="hash"></span>
                     </div>
-                    <input type="hidden" id="salt-bytes" name="salt-bytes" />
-                    <input type="hidden" id="hash-bytes" name="hash-bytes" />
                 </div>
                 <div id="error" class="result-wrapper wrapper error" style="display: none">
-                    The hash is invalid.
+                    Invalid
                 </div>
             </article>
         </section>
     </div>
 
     <footer>
-        <p class="content">Bcrypt-Decoder.com - online bcrypt hash decoder</p>
+        <p class="content">BcryptDecoder - Online bcrypt hash decoder</p>
     </footer>
 
     <script type="module" src="js/app.js"></script>
