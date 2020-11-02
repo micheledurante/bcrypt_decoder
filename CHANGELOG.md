@@ -6,6 +6,10 @@
 
 ## 1.0.0 [Unreleased]
 
+## 1.0.0-rc2 [2010-11-02]
+#### Added
+- Add CSS media queries.
+
 ## 1.0.0-rc1 [2010-11-02]
 #### Added
 - Create webpage style.

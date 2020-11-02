@@ -1,3 +1,51 @@
+@media screen and (max-width: 959px) {
+  strong {
+    display: block;
+  }
+
+  header {
+    margin: 16px 0;
+  }
+
+  section {
+    padding: 32px 0;
+  }
+
+  button.decode,
+    button.decode:focus {
+    padding: 16px 0;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .content {
+  max-width: 960px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  header {
+    margin: 32px 0;
+  }
+
+  h1 strong,
+  h1 .light {
+    border-bottom: 1px solid #3a6c44;
+  }
+
+  section {
+    padding: 64px 0;
+  }
+
+  button.decode,
+  button.decode:focus {
+    padding: 16px 48px;
+  }
+}
+
 html {
   color: #222;
 }
@@ -16,15 +64,18 @@ html, body {
   height: 100%;
 }
 
+.light {
+ font-weight: 300;
+}
+  
 strong {
   font-weight: 700;
 }
 
-.content {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
+h1 {
+  font-weight: inherit;
+  color: #3a6c44;
+}  
 
 header a:link,
 header a:visited,
@@ -83,7 +134,6 @@ button.decode:focus {
   font-size: 1.2em;
   line-height: 1.2em;
   margin: 0;
-  padding: 16px 48px;
   border: 0 none;
   color: #f7f7f7;
   transition: background-color 0.1s;
@@ -92,6 +142,11 @@ button.decode:focus {
 button.decode:hover {
   transition: background-color 0.25s;
   background-color: #2b5533;
+}
+
+.content {
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
 .actions {
@@ -107,31 +162,9 @@ button.decode:hover {
   flex: 1 0 auto;
 }
 
-h1 {
-  height: 3em;
-  line-height: 3em;
-  font-size: 2em;
-  font-weight: inherit;
-  color: #3a6c44;
-}
-
-h1 strong,
-h1 .light {
-  border-bottom: 1px solid #3a6c44;
-}
-
-.light {
-  font-weight: 300;
-}
-
-section {
-  padding: 64px 0;
-}
-
 footer {
   background-color: #3a6c44;
   color: #f7f7f7;
-  height: 3em;
   line-height: 3em;
   flex-shrink: 0;
   font-size: 0.9em;

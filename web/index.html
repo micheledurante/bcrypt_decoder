@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>Bcrypt-Decoder.com - online bcrypt hash decoder</title>
-    <meta name="description" content="Bcrypt-Decoder.com decode Bcrypt hashes into their readable parts. You can use it with a generated Bcrypt hash to know which parts it is composed of.">
+    <meta name="description"
+          content="Bcrypt-Decoder.com decode Bcrypt hashes into their readable parts. You can use it with a generated Bcrypt hash to know which parts it is composed of.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <meta property="og:title" content="Bcrypt-Decoder.com">
@@ -14,54 +15,57 @@
 
     <link rel="manifest" href="site.webmanifest">
     <link rel="apple-touch-icon" href="icon.png">
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <div class="page-wrapper">
-        <header>
-            <h1 class="content"><strong><a href="/">BcryptDecoder</a></strong><span class="light"> Online bcrypt hash decoder</span></h1>
-        </header>
+<div class="page-wrapper">
+    <header>
+        <h1 class="content"><strong><a href="/">BcryptDecoder</a></strong><span class="light"> Online bcrypt hash decoder</span>
+        </h1>
+    </header>
 
-        <section>
-            <article class="content">
-                <div class="input-wrapper wrapper">
+    <section>
+        <article class="content">
+            <div class="input-wrapper wrapper">
+                <label for="hash-input">Hash:
                     <div class="clear-wrapper">
-                        <input id="hash-input" name="hash-input" title="Provide the input" type="text" placeholder="Provide the input">
+                        <input id="hash-input" name="hash-input" title="Enter the hash" type="text">
                         <button class="clear-button" id="clear-button">&#935;</button>
                     </div>
-                    <div class="actions">
-                        <button class="decode" id="decode" type="button">Decode</button>
-                    </div>
+                </label>
+                <div class="actions">
+                    <button class="decode" id="decode" type="button">Decode</button>
                 </div>
-                <div id="success" class="result-wrapper wrapper success" style="display: none">
-                    <div>
-                        <span>Variant: </span><span id="algo"></span>
-                    </div>
-                    <div>
-                        <span>Cost: 2e</span><span id="cost"></span><span> = </span><span id="iterations"></span><span> iterations</span>
-                    </div>
-                    <div>
-                        <span>Salt: </span><span id="salt"></span>
-                    </div>
-                    <div>
-                        <span>Hash: </span><span id="hash"></span>
-                    </div>
+            </div>
+            <div id="success" class="result-wrapper wrapper success" style="display: none">
+                <div>
+                    <span>Variant: </span><span id="algo"></span>
                 </div>
-                <div id="error" class="result-wrapper wrapper error" style="display: none">
-                    Invalid
+                <div>
+                    <span>Cost: 2e</span><span id="cost"></span><span> = </span><span id="iterations"></span><span> iterations</span>
                 </div>
-            </article>
-        </section>
-    </div>
+                <div>
+                    <span>Salt: </span><span id="salt"></span>
+                </div>
+                <div>
+                    <span>Hash: </span><span id="hash"></span>
+                </div>
+            </div>
+            <div id="error" class="result-wrapper wrapper error" style="display: none">
+                Invalid
+            </div>
+        </article>
+    </section>
+</div>
 
-    <footer>
-        <p class="content">BcryptDecoder - Online bcrypt hash decoder</p>
-    </footer>
+<footer>
+    <p class="content">BcryptDecoder - Online bcrypt hash decoder</p>
+</footer>
 
-    <script type="module" src="js/app.js"></script>
+<script type="module" src="js/app.js"></script>
 </body>
 
 </html>
