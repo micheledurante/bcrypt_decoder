@@ -4,6 +4,7 @@
 #### Added
 - Create webpage style.
 - Store decoded info in a `Vec<Vec<u8>>` on rust side and convert back on `js` side to reduce the number of calls.
+- Add open source analytics.
 
 #### Removed
 - base64 decoding.
