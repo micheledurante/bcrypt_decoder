@@ -6,6 +6,10 @@
 
 ## 1.0.0 [Unreleased]
 
+## 1.0.0-rc4 [2010-11-02]
+#### Changed
+- Create Puls dark style.
+
 ## 1.0.0-rc3 [2010-11-02]
 #### Fixed
 - Header `<a>` attribute and reduced width.
