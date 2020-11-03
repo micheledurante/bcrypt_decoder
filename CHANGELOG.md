@@ -4,7 +4,7 @@
 #### Added
 - Find a way to reduce the number of calls over the `js-wasm` boundary.
 
-## 1.0.0 [Unreleased]
+## 1.0.0 [2010-11-03]
 
 ## 1.0.0-rc4 [2010-11-02]
 #### Changed
