@@ -1,6 +1,6 @@
 [package]
 name = "bcrypt_decoder"
-version = "1.0.0"
+version = "1.0.1"
 authors = ["micheled <me@thisisdurante.com>"]
 edition = "2018"
 
