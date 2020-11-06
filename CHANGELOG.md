@@ -4,6 +4,13 @@
 #### Added
 - Find a way to reduce the number of calls over the `js-wasm` boundary.
 
+## 1.0.3 [2010-11-06]
+#### Added
+- Add 404 page.
+
+#### Changed
+- Meta info on HTML.
+
 ## 1.0.2 [2010-11-06]
 #### Added
 - `site.webmanifest` file.
