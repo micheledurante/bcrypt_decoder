@@ -4,7 +4,11 @@
 #### Added
 - Find a way to reduce the number of calls over the `js-wasm` boundary.
 
-## 1.0.0 [2010-11-04]
+## 1.0.2 [2010-11-06]
+#### Added
+- `site.webmanifest` file.
+
+## 1.0.1 [2010-11-04]
 #### Fixed
 - 404 for `icon.png`.
 
