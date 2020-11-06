@@ -1,0 +1,20 @@
+{
+  "name": "BcryptDecoder Online bcrypt hash decoder",
+  "short_name": "BcryptDecoder",
+  "description": "BcryptDecoder decode Bcrypt hashes into their readable parts. You can use it with a valid generated Bcrypt hash to decode the parts it is composed of.",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "background_color": "#343a40",
+  "theme_color": "#343a40",
+  "icons": [{
+    "src": "favicon.ico",
+    "sizes": "16x16",
+    "type": "image/ico"
+  },
+  {
+    "src": "icon.png",
+    "sizes": "16x16",
+    "type": "image/png"
+  }]
+}
