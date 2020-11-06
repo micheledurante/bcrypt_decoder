@@ -69,9 +69,11 @@ strong {
   font-weight: 700;
 }
 
-h1 {
+h1,
+h2 {
   font-weight: inherit;
-}  
+}
+
 
 header a:link,
 header a:visited,
